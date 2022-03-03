@@ -1,0 +1,387 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://theme/dark_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/TextEditor.gd" type="Script" id=2]
+
+[node name="TextEditor" type="TextEdit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+text = "
+
+
+
+from argparse import ArgumentParser
+from os import system
+from pathlib import Path
+from urllib.request import urlopen
+from getpass import getpass
+
+# Parse arguments
+parser = ArgumentParser(description='Arch installer written in Python')
+parser.add_argument('-d', '--dry', action='store_true', help='Dry run without any changes. Useful for debugging.')
+args = parser.parse_args()
+
+# Execute bash command
+def shell_cmd(command: str, chroot=False, forced=False):
+	# Set prefix if command runs in chroot
+	prefix = 'arch-chroot /mnt ' if chroot else ''
+	# If forced is True, run command anyway, even in dry mode
+	if args.dry and not forced:
+		# Print command if in \"dry\" mode
+		print(f'{prefix}{command}')
+	else:
+		# Execute shell command
+		system(f'{prefix}{command}')
+
+profile = {'fstype' : '', 'fstools' : ''}
+
+# ---------- INSTALLER ---------- #
+
+def create_partitions():
+	# Show existing drives and partitions.
+	shell_cmd('umount -R /mnt')
+	shell_cmd('lsblk', forced=True)
+	# Ask for creating partitions. Otherwise existing partitions will be used.
+	answer = input('Use cfdisk to create partitions? (y/N)') or 'n'
+	if answer.lower() == 'y':
+		shell_cmd('cfdisk', forced=True)
+	# Select BOOT and ROOT partitions
+	boot = input('Select BOOT partition (default: /dev/sda1): ') or '/dev/sda1'
+	root = input('Select ROOT partition (default: /dev/sda2): ') or '/dev/sda2'
+	fstype = input('''
+1. ext4 (default)
+2. btrfs
+Select root filesystem: ''') or '1'
+	print('Creating partitions...')
+	# Format ROOT
+	if fstype = '1':
+		shell_cmd(f'mkfs.ext4 -F -F {root}')
+		profile['fstype'] = 'ext4'
+	elif fstype == '2':
+		shell_cmd(f'mkfs.btrfs -f {root}')
+		profile['fstype'] = 'btrfs'
+		profile['fstools'] = 'btrfs-progs'
+	else:
+		print('No such option. Try again.')
+		create_partitions()
+		return
+	# Format BOOT
+	shell_cmd(f'mkfs.fat -F 32 {boot}')
+	print('Mounting partitions...')
+	# Mount ROOT
+	shell_cmd('mount /dev/sda2 /mnt')
+	# If btrfs selected, create subvolumes and mount them
+	if fstype == '2':
+		shell_cmd('btrfs subvolume create /mnt/@')
+		shell_cmd('btrfs subvolume create /mnt/@home')
+		shell_cmd('btrfs subvolume create /mnt/@var')
+		shell_cmd('umount /mnt')
+		shell_cmd(f'mount -o noatime,autodefrag,compress=zstd,space_cache=v2,subvol=@ {root} /mnt')
+		shell_cmd('mkdir -p /mnt/{home,var}')
+		shell_cmd(f'mount -o noatime,autodefrag,compress=zstd,space_cache=v2,subvol=@home {root} /mnt/home')
+		shell_cmd(f'mount -o noatime,autodefrag,compress=zstd,space_cache=v2,subvol=@var {root} /mnt/var')
+	# Create BOOT directory and mount it.
+	shell_cmd('mkdir -p /mnt/boot/efi && mount /dev/sda1 /mnt/boot/efi')
+
+def configure_mirrors():
+	country = input(\"Which coutry mirrors to use? Type 'list' to display countries (default: Worldwide) \") or 'Worldwide'
+	# Get mirrorlist
+	mirrorlist = urlopen('https://archlinux.org/mirrorlist/all/').read().decode('utf8')
+	# Get country names
+	countrylist = ''
+	for line in mirrorlist.splitlines():
+		if 'Arch' in line or 'Generated' in line or 'Server' in line or '## \\n' in line:
+			pass
+		else:
+			countrylist = countrylist + line.replace('#', '') + '\\n'
+	# If country exists rate mirrors with reflector
+	if country != 'list':
+		if country in countrylist:
+			print('Sorting mirrors by speed...')
+			shell_cmd(f'reflector -p https -p http --sort rate --latest 10 --save /etc/pacman.d/mirrorlist -c \"{country}\"')
+		else:
+			print('No such country. Try again.')
+			configure_mirrors()
+			return
+	else:
+		# Display list of countries
+		shell_cmd(f'echo -e \"{countrylist}\" | column', forced=True)
+		configure_mirrors()
+		return
+
+def configure_pacman(chroot=False):
+	prefix = '/mnt' if chroot else ''
+	# Enable parallel downloads
+	shell_cmd(f\"sed -i -e 's/#ParallelDownloads/ParallelDownloads/g' {prefix}/etc/pacman.conf\")
+	# Add some color :)
+	shell_cmd(f\"sed -i -e 's/#Color/Color/g' {prefix}/etc/pacman.conf\")
+
+def pacstrap():
+	with open('/proc/cpuinfo', 'r') as file:
+		text = file.read()
+		if 'AuthenticAMD' in text:
+			ucode = 'amd-ucode'
+		elif 'GenuineIntel' in text:
+			ucode = 'intel-ucode'
+		shell_cmd(f'pacstrap /mnt base base-devel linux linux-firmware {ucode} {profile['fstools']} nano bash-completion man git neofetch reflector')
+
+def genfstab():
+	shell_cmd('genfstab -U /mnt >> /mnt/etc/fstab')
+
+def set_timezone():
+	timezone = input('Enter valid timezone (e.g. Europe/Moscow): ') or 'Europe/Moscow'
+	if Path(f'/usr/share/zoneinfo/{timezone}').exists():
+		shell_cmd(f'ln -sf /usr/share/zoneinfo/{timezone} /etc/localtime', True)
+		shell_cmd('hwclock --systohc', True)
+	else:
+		print('Invalid timezone. Try again.')
+		set_timezone()
+		return
+
+def enter_locale():
+	locale = input(\"Enter locale or type 'list' to display available (default: en_US): \") or 'en_US'
+	# List locales
+	if locale == 'list':
+		with open('/etc/locale.gen') as file:
+			locales = ''
+			for line in file:
+				if 'UTF-8 UTF-8' in line and line[1] != ' ':
+					if line[0] == '#':
+						line = line[1:-15]
+					else:
+						line = line[0:-15]
+					locales = locales + '\\n' + line
+			shell_cmd(f\"echo -e '{locales}' | column\", forced=True)
+			enter_locale()
+			return
+	else:
+		enable_locale(locale)
+
+def enable_locale(locale: str):
+	# Check if locale exists and if it does enable it.
+	with open('/etc/locale.gen') as file:
+		text = file.read()
+		if f'{locale}.UTF-8 UTF-8' in text:
+			shell_cmd(f\"sed -i -e 's/#{locale}.UTF-8 UTF-8/{locale}.UTF-8 UTF-8/g' /etc/locale.gen\", True)
+		else:
+			print('No such locale. Try again.')
+			enter_locale()
+			return
+	# Add another locale
+	answer = input('Add another one? (y/N) ') or 'n'
+	if answer.lower() == 'y':
+		enter_locale()
+		return
+	else:
+		shell_cmd('locale-gen', True)
+		set_locale()
+
+def set_locale():
+	# List enabled locales
+	with open('/etc/locale.gen') as file:
+		locales = []
+		count = 0
+		for line in file:
+			if line[0] != '#' and 'UTF-8 UTF-8' in line:
+				locales.append(line[0:-15])
+				print(f'{count}. {line[0:-15]}')
+				count += 1
+		locale = input('Which locale set system-wide? ') or '0'
+		if locales[int(locale)]:
+			shell_cmd(f\"bash -c 'echo LANG={locales[int(locale)]}.UTF-8 > /etc/locale.conf'\", True)
+		else:
+			set_locale()
+			return
+
+def create_user():
+	user = input('Enter username: ')
+	if user == '':
+		print('No username provided. Try again.')
+		create_user()
+		return
+	password = getpass.getpass('Enter password: ')
+	if password == '':
+		print('No password provided. Try again.')
+		create_user()
+		return
+	confirm_password = getpass.getpass('Confirm password: ')
+	if password == confirm_password:
+		shell_cmd(f\"bash -c \\\"echo 'root:{password}' | chpasswd\\\"\", True)
+		shell_cmd(f'useradd -mG wheel {user}', True)
+		shell_cmd(f\"bash -c \\\"echo '{user}:{password}' | chpasswd\\\"\", True)
+		shell_cmd(f\"sed -i -e 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers\", True)
+	else:
+		print('Passwords do not match. Try again.')
+		create_user()
+		return
+
+def set_hostname():
+	hostname = input('Enter hostname: ')
+	if hostname == '':
+		print('No hostname provided. Try again.')
+		set_hostname()
+		return
+	# Set host name
+	shell_cmd(f\"bash -c 'echo {hostname} > /etc/hostname'\", True)
+	# Setup hosts file
+	shell_cmd(f\"bash -c \\\"echo -e '127.0.0.1 localhost\\n::1 localhost\\n127.0.1.1 {hostname}.localdomain {hostname}' >> /etc/hosts\\\"\", True)
+
+def mkinitcpio():
+	if profile['fstype'] == 'btrfs':
+		shell_cmd(\"sed -i -e 's/MODULES=()/MODULES=(btrfs)/g' /etc/mkinitcpio.conf\", True)
+	shell_cmd('mkinitcpio -p linux', True)
+
+def install_grub():
+	shell_cmd('pacman -S grub efibootmgr --noconfirm', True)
+	shell_cmd('grub-install --target=x86_64-efi --efi-directory=/boot/efi', True)
+	shell_cmd('grub-mkconfig -o /boot/grub/grub.cfg', True)
+
+def install_desktop():
+	# Setup desktop enviroment
+	de = input('''
+1. GNOME (Default)
+2. KDE Plasma
+3. XFCE
+Select Desktop Enviroment: ''') or '1'
+	if de == '1':
+		de = 'gnome networkmanager'
+		dm = 'gdm'
+	elif de == '2':
+		de = 'xorg-server plasma networkmanager konsole dolphin'
+		dm = 'sddm'
+	elif de == '3':
+		de = 'xorg-server lightdm-gtk-greeter lightdm-gtk-greeter-settings xfce4 xfce4-goodies xdg-user-dirs networkmanager network-manager-applet'
+		dm = 'lightdm'
+	else:
+		print('No such option. Try again.')
+		install_desktop()
+		return
+	# Setup graphics drivers
+	gfx = input('''
+1. AMD / ATI
+2. Intel
+3. Nvidia proprietary
+4. Nvidia nouveau
+5. VMWare / VirtualBox
+Select graphics drivers: ''')
+	if gfx == '1':
+		gfx = 'mesa xf86-video-amdgpu xf86-video-ati libva-mesa-driver vulkan-radeon'
+	elif gfx == '2':
+		gfx = 'mesa libva-intel-driver intel-media-driver vulkan-intel'
+	elif gfx == '3':
+		gfx = 'nvidia nvidia-settings'
+	elif gfx == '4':
+		gfx = 'mesa xf86-video-nouveau libva-mesa-driver'
+	elif gfx == '5':
+		gfx = 'mesa xf86-video-vmware'
+	else:
+		print('No such option. Try again.')
+		install_desktop()
+		return
+	# Install DE
+	shell_cmd(f'pacman -S {dm} {de} {gfx} --noconfirm', True)
+	# Enable display manager
+	shell_cmd(f'systemctl enable {dm}', True)
+	# Enable network manager
+	shell_cmd(f'systemctl enable NetworkManager', True)
+
+def chroot():
+	chroot = input('Chroot into installation? (y/N)') or 'n'
+	if chroot == 'y':
+		# Chroot into system
+		shell_cmd('arch-chroot /mnt')
+		return
+	else:
+		# Unmount drives
+		shell_cmd('umount -R /mnt')
+		finish_installation()
+		return
+
+def finish_installation():
+	# Reboot system
+	reboot = input('Installation finished! Reboot now? (Y/n)') or 'y'
+	if reboot == 'y':
+		shell_cmd('reboot')
+		return
+	else:
+		return
+
+def main():
+	create_partitions()
+	configure_mirrors()
+	configure_pacman()
+	pacstrap()
+	genfstab()
+	set_timezone()
+	enter_locale()
+	create_user()
+	set_hostname()
+	mkinitcpio()
+	configure_pacman(True)
+	install_grub()
+	install_desktop()
+	chroot()
+
+if __name__ == '__main__':
+	main()"
+highlight_current_line = true
+syntax_highlighting = true
+show_line_numbers = true
+fold_gutter = true
+context_menu_enabled = false
+smooth_scrolling = true
+hiding_enabled = true
+minimap_draw = true
+caret_blink = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveDialog" type="FileDialog" parent="."]
+margin_left = 130.0
+margin_top = 96.0
+margin_right = 896.0
+margin_bottom = 488.0
+window_title = "Сохранить файл"
+access = 2
+current_dir = "/mnt/STORE/DEV/Neutrino"
+current_path = "/mnt/STORE/DEV/Neutrino/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+anchor_left = 0.375
+anchor_top = 0.405
+anchor_right = 0.570312
+anchor_bottom = 0.52132
+margin_bottom = 0.208038
+window_title = "Confirm..."
+dialog_text = "       Exit without saving?"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Completions" type="ItemList" parent="."]
+visible = false
+anchor_left = -0.000499997
+anchor_top = -1.4471e-05
+anchor_right = 0.126828
+anchor_bottom = 0.0578551
+margin_left = 0.511997
+margin_top = 0.00798798
+margin_right = 0.127991
+margin_bottom = 0.0639801
+mouse_filter = 2
+allow_reselect = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="text_changed" from="." to="." method="_on_TextEditor_text_changed"]
+[connection signal="file_selected" from="SaveDialog" to="." method="_on_SaveDialog_file_selected"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

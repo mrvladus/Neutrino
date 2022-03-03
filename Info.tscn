@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://icons/icon.png" type="Texture" id=1]
+
+[node name="Info" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.323333
+anchor_right = 0.5
+anchor_bottom = 0.323333
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+disabled = true
+shortcut_in_tooltip = false
+button_mask = 0
+texture_disabled = ExtResource( 1 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Name" type="Label" parent="Logo"]
+anchor_right = 1.0
+anchor_bottom = 0.984
+margin_left = 24.0
+margin_top = 142.0
+margin_right = -24.0
+margin_bottom = 40.048
+text = "Neutrino"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shortcuts" type="Label" parent="Logo"]
+anchor_top = 0.013
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = 204.336
+margin_right = 80.0
+margin_bottom = 150.0
+text = "Create new file: Control+N
+Open file: Control+O
+Open folder: Contron+Shift+O"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Version" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -24.0
+text = "v0.1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
