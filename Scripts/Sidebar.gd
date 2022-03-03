@@ -56,7 +56,7 @@ func _on_Tree_item_activated() -> void:
 	elif dir.file_exists(path):
 		main.open_file(path)
 
-func _on_Sidebar_item_rmb_selected(position):
+func _on_Sidebar_item_rmb_selected(position): # Right click menu
 	$SidebarMenu.set_position(position)
 	$SidebarMenu.popup()
 
