@@ -6,7 +6,7 @@ var sidebar: bool = false # State of the sidebar
 var current_path: String setget path_changed # Stores current working folder
 
 func _ready() -> void:
-	set_window_size()
+	OS.window_maximized = true
 	set_current_path()
 
 func set_current_path() -> void: 
@@ -21,8 +21,3 @@ func set_current_path() -> void:
 func path_changed(new_path):
 	current_path = new_path
 	Settings.data['current_path'] = new_path
-
-func set_window_size() -> void:
-	OS.min_window_size = Vector2(400, 350)
-	OS.window_size = Vector2(Settings.data['window_width'], Settings.data['window_height'])
-	

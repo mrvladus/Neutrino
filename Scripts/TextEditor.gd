@@ -1,19 +1,21 @@
 extends TextEdit
 
+onready var tabs: Tabs = get_node("../../../Tabs")
+
 var lang: String # For syntax highlighting
 var saved: bool = true # State of file
 var file_path: String # For saving file again without save dialog
 var file_name: String # Current file name
 var indent_with: String = '\t' # Indent with Tabs is default
 var completions: Array # List of completions
-var functions: Array
+var functions: Array # List of functions
+var longest_word: int = 0 # Need for dynamic popup width
 
 func _ready() -> void:
-	grab_focus()
 	self.get_font("font").size = Settings.data['font_size'] # Set font size
 	apply_colors()
 	find_functions(text)
-	parse_text(text)
+	find_words(text)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -41,12 +43,12 @@ func save(save_as: bool = false) -> void:
 		$SaveDialog.popup_centered()
 	elif !saved: # If saving again just save file without dialog popup
 		save_file(file_path)
+		tabs.set_tab_title(tabs.current_tab, file_name)
 
 func _on_SaveDialog_file_selected(path: String) -> void:
 	save_file(path)
 	file_path = path # Update current path
 	file_name = path.get_file() # Update file name
-	var tabs: Tabs = get_node("../../Tabs")
 	tabs.set_tab_title(tabs.current_tab, file_name) # Update tab name
 	saved = true
 
@@ -54,10 +56,11 @@ func _on_SaveDialog_file_selected(path: String) -> void:
 
 func _on_TextEditor_text_changed() -> void:
 	saved = false # Set state to unsaved
+	tabs.set_tab_title(tabs.current_tab, file_name + '*')
 	close_brackets()
 	autoindent()
 	find_completions()
-	
+
 func close_brackets() -> void: # Add matching symbols
 	# Ignore theese
 	if Input.is_action_just_pressed("Del")\
@@ -90,7 +93,7 @@ func find_completions() -> void: # Takes words from completions list and put it 
 	if Input.is_action_just_pressed("ui_focus_next")\
 	or Input.is_action_just_pressed("ui_select"):
 		find_functions(get_line(cursor_get_line()))
-		parse_text(get_line(cursor_get_line()))
+		find_words(get_line(cursor_get_line()))
 		return
 	# Ignore theese
 	if Input.is_action_just_pressed("Del")\
@@ -100,7 +103,6 @@ func find_completions() -> void: # Takes words from completions list and put it 
 	var last_word: String = get_last_word()
 	if last_word.length() < 2: return # Treshold for activation is 2 symbols
 	$Completions.clear() # Clear old completions
-	var longest_word: int = 0 # Need for dynamic popup width
 	if !last_word in functions: # Prevent unneded completions
 		for word in functions: # Add functions to completion list
 			if word.begins_with(last_word):
@@ -110,9 +112,9 @@ func find_completions() -> void: # Takes words from completions list and put it 
 		if word.begins_with(last_word):
 			$Completions.add_item(word)
 			longest_word = word.length() + 1 if word.length() > longest_word else longest_word
-	show_completions(longest_word)
+	show_completions()
 
-func show_completions(longest_word: int) -> void:
+func show_completions() -> void:
 	if $Completions.get_item_count() == 0: return # If list not empty - create popup
 	var line_width: float = get_line_width(cursor_get_line())
 	var line_length: float = get_line(cursor_get_line()).length()
@@ -164,15 +166,15 @@ func get_cursor_position() -> Vector2:
 
 func find_functions(text_to_parse: String):
 	var regex = RegEx.new()
-	regex.compile("\\w+(\\()")
+	regex.compile("\\w+(\\()") # Search for words with "("
 	for result in regex.search_all(text_to_parse):
 		if result.get_string().length() > 2\
 		and !result.get_string().trim_suffix('(') in functions:
 			functions.append(result.get_string().trim_suffix('('))
 
-func parse_text(text_to_parse: String) -> void: # Find words in string using RegEx
+func find_words(text_to_parse: String) -> void: # Find words in string using RegEx
 	var regex = RegEx.new()
-	regex.compile("\\w+")
+	regex.compile("\\w+") # Search for words
 	for result in regex.search_all(text_to_parse):
 		if result.get_string().length() > 2\
 		and !result.get_string() in completions\
@@ -181,7 +183,7 @@ func parse_text(text_to_parse: String) -> void: # Find words in string using Reg
 
 func get_last_word() -> String:
 	var regex: RegEx = RegEx.new()
-	var _err = regex.compile("\\w+")
+	var _err = regex.compile("\\w+") # Search for words
 	var results: Array = []
 	for result in regex.search_all(get_line(cursor_get_line())):
 		results.append(result.get_string())
@@ -190,7 +192,6 @@ func get_last_word() -> String:
 #################### CLOSING ####################
 
 func close_tab() -> void:
-	var tabs: Tabs = get_node("../../../Tabs")
 	if Global.tabs.size() >= 1: # Switch to last opened tab
 		tabs.current_tab = Global.tabs.size() - 1
 	tabs.remove_tab(tabs.current_tab)

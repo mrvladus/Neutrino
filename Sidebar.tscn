@@ -8,7 +8,6 @@ margin_bottom = 568.0
 size_flags_vertical = 3
 allow_reselect = true
 allow_rmb_select = true
-hide_root = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -17,7 +16,7 @@ __meta__ = {
 [node name="SidebarMenu" type="PopupMenu" parent="."]
 margin_right = 20.0
 margin_bottom = 20.0
-items = [ "Open", null, 0, false, false, 0, 0, null, "", false, "Delete", null, 0, false, false, 1, 0, null, "", false, "Rename", null, 0, false, false, 2, 0, null, "", false, "Show folder", null, 0, false, false, 3, 0, null, "", false, "New folder", null, 0, false, false, 4, 0, null, "", false ]
+items = [ "Delete", null, 0, false, false, 0, 0, null, "", false, "Rename", null, 0, false, false, 1, 0, null, "", false, "Show folder", null, 0, false, false, 2, 0, null, "", false, "New folder", null, 0, false, false, 3, 0, null, "", false ]
 
 [node name="Dialog" type="WindowDialog" parent="."]
 margin_right = 256.0
@@ -36,7 +35,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="item_activated" from="." to="." method="_on_Tree_item_activated"]
+[connection signal="item_activated" from="." to="." method="_on_Sidebar_item_activated"]
 [connection signal="item_rmb_selected" from="." to="." method="_on_Sidebar_item_rmb_selected"]
 [connection signal="id_pressed" from="SidebarMenu" to="." method="_on_SidebarMenu_id_pressed"]
-[connection signal="text_entered" from="Dialog/Text" to="." method="_on_RenameText_text_entered"]
+[connection signal="text_entered" from="Dialog/Text" to="." method="_on_Text_text_entered"]

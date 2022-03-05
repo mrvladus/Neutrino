@@ -2,8 +2,6 @@ extends Node
 
 var data: Dictionary = {
 	'ver' : '0.1',
-	'window_height' : 600,
-	'window_width' : 1024,
 	'font_size' : 16,
 	'effects' : true,
 	'sidebar' : false,

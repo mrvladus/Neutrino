@@ -59,7 +59,7 @@ func _on_FileDialog_file_selected(path: String) -> void:
 
 func _on_FileDialog_dir_selected(dir: String) -> void:
 	Global.current_path = dir # Set global path to selected dir
-	Sidebar.fill_tree() # Fill sidebar
+	Sidebar.fill_tree(true) # Fill sidebar
 	Sidebar.visible = true # Set it visible
 	Settings.data['sidebar'] = true # Change settings
 
