@@ -39,7 +39,7 @@ func fill_tree(clear: bool = false, path: String = Global.current_path, root_dir
 			element.set_icon(0, file_icon)
 		file_name = dir.get_next()
 
-func get_selected_path():
+func get_selected_path(): # Get full path of the tree item
 	var base_path: PoolStringArray = [Global.current_path]
 	var path: Array = []
 	var item: TreeItem = get_selected()
