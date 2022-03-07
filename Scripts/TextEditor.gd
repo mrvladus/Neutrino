@@ -2,7 +2,7 @@ extends TextEdit
 
 onready var tabs: Tabs = get_node("../../../Tabs")
 
-var lang: String # For syntax highlighting
+var extension: String # For syntax highlighting
 var saved: bool = true # State of file
 var file_path: String # For saving file again without save dialog
 var file_name: String # Current file name
@@ -22,12 +22,14 @@ func _input(event: InputEvent) -> void:
 		autocomplete_input_handler()
 
 func apply_colors() -> void: # Apply syntax highlighting
-	add_color_region("'", "'", Colors.prn_color)
-	add_color_region('"', '"', Colors.prn_color)
-	if lang in Syntax.languages:
-		for keyword in Syntax.languages[lang]['keywords']:
-			add_keyword_color(keyword, Colors.kw_color)
-		add_color_region(Syntax.languages[lang]['sl_comment'], '', Colors.cm_color, true)
+	for lang in Syntax.languages:
+		if extension in Syntax.languages[lang]['extensions']:
+			add_color_region("'", "'", Colors.prn_color)
+			add_color_region('"', '"', Colors.prn_color)
+			add_color_region(Syntax.languages[lang]['sl_comment'], '', Colors.cm_color, true)
+			for keyword in Syntax.languages[lang]['keywords']:
+				add_keyword_color(keyword, Colors.kw_color)
+			break
 
 #################### SAVING FILE ####################
 

@@ -14,7 +14,7 @@ func _ready() -> void:
 func create_new_file(file_name: String, content: String, extension: String, path: String = '') -> void:
 	var editor: TextEdit = text_scene.instance()
 	editor.name = str(index) # Apply unique id
-	editor.lang = extension # For syntax highlighting
+	editor.extension = extension # For syntax highlighting
 	editor.text = content # Content of the opened file
 	editor.file_name = file_name
 	editor.file_path = path

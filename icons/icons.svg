@@ -7,7 +7,7 @@
    viewBox="0 0 15.923417 10.847925"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
    sodipodi:docname="icons.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,9 +25,9 @@
      showgrid="true"
      inkscape:lockguides="false"
      showguides="false"
-     inkscape:zoom="8"
-     inkscape:cx="12.9375"
-     inkscape:cy="35.75"
+     inkscape:zoom="22.627417"
+     inkscape:cx="29.720582"
+     inkscape:cy="7.4688154"
      inkscape:window-width="1600"
      inkscape:window-height="831"
      inkscape:window-x="0"
@@ -306,61 +306,8 @@
      style="display:inline"
      transform="translate(0.13230008,0.13229153)">
     <g
-       id="g1085">
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 14.022917,4.7625 13.493751,5.2916665"
-         id="path1030"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0"
-         inkscape:export-filename="/mnt/STORE/DEV/Neutrino/icons/back.png"
-         inkscape:export-xdpi="174.54442"
-         inkscape:export-ydpi="174.54442" />
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 14.022917,5.8208333 13.493751,5.2916665"
-         id="path1032"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0"
-         inkscape:export-filename="/mnt/STORE/DEV/Neutrino/icons/back.png"
-         inkscape:export-xdpi="174.54442"
-         inkscape:export-ydpi="174.54442" />
-    </g>
-    <path
-       style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0.26458333,3.96875 H 1.0583333 c 0,0 0.2645834,0 0.2645834,0.2645834 0,0.2645833 0.2645833,0.2645833 0.2645833,0.2645833 h 0.7937501 c 0,0 0.264583,0 0.264583,0.2645833 0,0.2645834 0,1.5875 0,1.5875 0,0 0,0.2645834 -0.264583,0.2645834 -0.264583,0 -2.11666677,0 -2.11666677,0 0,0 -0.264583295972435,0 -0.264583295972435,-0.2645834 0,-0.2645833 0,-2.1166666 0,-2.1166666 0,0 0,-0.2645834 0.264583295972435,-0.2645834 z"
-       id="path2543"
-       inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/open.png"
-       inkscape:export-xdpi="174.54443"
-       inkscape:export-ydpi="174.54443" />
-    <g
-       id="g1656"
-       transform="translate(-3.96875)">
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 8.2020833,-3.3333334e-8 h 1.5875 c 0,0 0.2645837,0 0.5291667,0.264583393333334 0.264583,0.2645833 0.264583,0.5291666 0.264583,0.5291666 V 2.3812499 c 0,0 0,0.2645834 -0.264583,0.2645834 -0.264583,0 -2.1166667,0 -2.1166667,0 0,0 -0.264583,0 -0.264583,-0.2645834 0,-0.2645833 0,-2.11666654 0,-2.11666654 0,0 0,-0.264583393333343 0.264583,-0.264583393333334 z"
-         id="path3040"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/save.png"
-         inkscape:export-xdpi="174.54445"
-         inkscape:export-ydpi="174.54445" />
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 8.7312503,2.6458333 V 2.1166666 h 1.058333 v 0.5291667"
-         id="path3042"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/save.png"
-         inkscape:export-xdpi="174.54445"
-         inkscape:export-ydpi="174.54445" />
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 9.7895833,-3.3333334e-8 9.7895843,0.79375006 H 8.7312503 V 6.6666666e-8"
-         id="path3077"
-         sodipodi:nodetypes="cccc"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/save.png"
-         inkscape:export-xdpi="174.54445"
-         inkscape:export-ydpi="174.54445" />
-    </g>
-    <g
-       id="g2345">
+       id="g2345"
+       transform="translate(-3.174999)">
       <path
          style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.132292px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
          d="M 7.143749,1.3229168 8.4666667,0"
@@ -379,75 +326,6 @@
          inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/close.png"
          inkscape:export-xdpi="145.45454"
          inkscape:export-ydpi="145.45454" />
-    </g>
-    <g
-       id="g1748"
-       inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/save_as.png"
-       inkscape:export-xdpi="174.54445"
-       inkscape:export-ydpi="174.54445">
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 0.2645833,7.9375001 h 1.5875 c 0,0 0.2645837,0 0.5291667,0.2645834 0.264583,0.2645833 0.264583,0.5291666 0.264583,0.5291666 V 10.31875 c 0,0 0,0.264583 -0.264583,0.264583 -0.264583,0 -2.1166667,0 -2.1166667,0 0,0 -0.264583,0 -0.264583,-0.264583 0,-0.264583 0,-2.1166665 0,-2.1166665 0,0 0,-0.2645834 0.264583,-0.2645834 z"
-         id="path3040-6"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/save.png"
-         inkscape:export-xdpi="174.54445"
-         inkscape:export-ydpi="174.54445" />
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 1.8520833,7.9375001 10e-7,0.7937501 h -1.058334 v -0.79375"
-         id="path3077-5"
-         sodipodi:nodetypes="cccc"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/save.png"
-         inkscape:export-xdpi="174.54445"
-         inkscape:export-ydpi="174.54445" />
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.324047px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 0.52916664,9.525 H 2.1166667"
-         id="path1341"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0" />
-      <path
-         style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.324047px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 0.52916667,10.054167 H 2.1166668"
-         id="path1341-3"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0" />
-    </g>
-    <g
-       id="g3241"
-       inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/new.png"
-       inkscape:export-xdpi="174.54485"
-       inkscape:export-ydpi="174.54485">
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 5.2916663,3.96875 c 0.176654,0 0.353042,0 0.5735311,0.1324266 0.2204891,0.1324266 0.485067,0.3970045 0.6172265,0.6174925 0.1321594,0.2204879 0.1321594,0.3968732 0.1321594,0.5729975"
-         id="path3804"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/new.png"
-         inkscape:export-xdpi="174.54485"
-         inkscape:export-ydpi="174.54485"
-         inkscape:original-d="m 5.2916663,3.96875 c 0.176654,2.646e-4 0.353042,2.646e-4 0.529167,0 0.264853,0.2648533 0.529431,0.5294313 0.79375,0.79375 2.64e-4,0.176657 2.64e-4,0.3530423 0,0.5291666"
-         inkscape:path-effect="#path-effect3806" />
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 5.2916663,3.96875 h -1.058333 c 0,0 -0.264584,0 -0.264584,0.2645834 0,0.2645833 0,2.1166665 0,2.1166665 0,0 0,0.2645834 0.264584,0.2645834 0.264583,0 2.116666,0 2.116666,0 0,0 0.264584,0 0.264584,-0.2645834 0,-0.2645833 0,-1.0583333 0,-1.0583333"
-         id="path3841"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/new.png"
-         inkscape:export-xdpi="174.54485"
-         inkscape:export-ydpi="174.54485" />
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 5.2916667,4.7625 V 5.8208333"
-         id="path2660"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="cc" />
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 4.7625,5.2916667 H 5.8208333"
-         id="path2662"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="cc" />
     </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.28231;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -476,65 +354,6 @@
        inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/menu.png"
        inkscape:export-xdpi="174.54443"
        inkscape:export-ydpi="174.54443" />
-    <g
-       id="g1583"
-       inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/file.png"
-       inkscape:export-xdpi="174.54485"
-       inkscape:export-ydpi="174.54485">
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 5.2916663,7.9375 c 0.176654,0 0.353042,0 0.5735311,0.1324266 0.2204891,0.1324266 0.4850671,0.3970046 0.6172265,0.6174925 0.1321594,0.2204879 0.1321594,0.3968732 0.1321594,0.5729975"
-         id="path3804-9"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/new.png"
-         inkscape:export-xdpi="174.54485"
-         inkscape:export-ydpi="174.54485"
-         inkscape:original-d="m 5.2916663,7.9375 c 0.176654,2.646e-4 0.353042,2.646e-4 0.529167,0 0.264853,0.2648533 0.529431,0.5294313 0.79375,0.79375 2.64e-4,0.176657 2.64e-4,0.3530423 0,0.5291666"
-         inkscape:path-effect="#path-effect3806-6" />
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 5.2916663,7.9375 h -1.058333 c 0,0 -0.264584,0 -0.264584,0.2645834 0,0.2645833 0,2.1166666 0,2.1166666 0,0 0,0.264583 0.264584,0.264583 0.264583,0 2.116666,0 2.116666,0 0,0 0.264584,0 0.264584,-0.264583 0,-0.264583 0,-1.0583334 0,-1.0583334"
-         id="path3841-1"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/new.png"
-         inkscape:export-xdpi="174.54485"
-         inkscape:export-ydpi="174.54485" />
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 4.4979167,9.2604167 H 5.8208333"
-         id="path1339"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0" />
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 4.4979167,9.7895833 H 5.8208333"
-         id="path1342"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0" />
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 4.4979167,8.73125 H 5.8208333"
-         id="path1344"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0" />
-    </g>
-    <g
-       id="g486">
-      <path
-         style="fill:none;stroke:#ffffff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 7.9375,4.2333332 c 0,0 0,-0.2645834 0.2645833,-0.2645834 0.2645833,0 2.1166667,0 2.1166667,0 0,0 0.264583,0 0.264583,0.2645834 0,0.2645833 0,2.1166666 0,2.1166666 0,0 0,0.2645833 -0.264583,0.2645833 -0.264583,0 -2.1166667,0 -2.1166667,0 0,0 -0.2645833,0 -0.2645833,-0.2645833 0,-0.2645833 0,-2.1166666 0,-2.1166666 z"
-         id="path323"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/sidebar.png"
-         inkscape:export-xdpi="174.54443"
-         inkscape:export-ydpi="174.54443" />
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 8.73125,3.96875 V 6.6145833"
-         id="path380"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0"
-         inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/sidebar.png"
-         inkscape:export-xdpi="174.54443"
-         inkscape:export-ydpi="174.54443" />
-    </g>
     <path
        style="fill:none;stroke:#ffffff;stroke-width:0.13229167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="M 9.2604166,0 C 9.5253053,0.17659235 9.7898886,0.35298115 9.9220278,0.48530431 10.054167,0.61762746 10.054167,0.70582014 9.9219031,0.83796098 9.7896392,0.97010182 9.5250611,1.1464871 9.2604166,1.3229167"
@@ -588,41 +407,6 @@
        inkscape:export-filename="/mnt/STORE/DEV/PyLab/icons/down.png"
        inkscape:export-xdpi="145.45454"
        inkscape:export-ydpi="145.45454" />
-    <path
-       style="fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 11.90625,4.2333332 c 0,0 0,-0.2645834 0.264583,-0.2645834 0.264584,0 2.116667,0 2.116667,0 0,0 0.264583,0 0.264583,0.2645834 0,0.2645833 0,2.1166666 0,2.1166666 0,0 0,0.2645833 -0.264583,0.2645833 -0.264583,0 -2.116667,0 -2.116667,0 0,0 -0.264583,0 -0.264583,-0.2645833 0,-0.2645833 0,-2.1166666 0,-2.1166666 z"
-       id="path1696"
-       inkscape:export-filename="/mnt/STORE/DEV/Neutrino/icons/back.png"
-       inkscape:export-xdpi="174.54442"
-       inkscape:export-ydpi="174.54442" />
-    <path
-       style="display:inline;fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 7.9375,8.2020833 c 0,0 0,-0.2645834 0.264583,-0.2645834 0.264584,0 2.116667,0 2.116667,0 0,0 0.264583,0 0.264583,0.2645834 0,0.2645833 0,2.1166667 0,2.1166667 0,0 0,0.264583 -0.264583,0.264583 -0.264583,0 -2.116667,0 -2.116667,0 0,0 -0.264583,0 -0.264583,-0.264583 0,-0.264583 0,-2.1166667 0,-2.1166667 z"
-       id="path1696-3"
-       inkscape:export-filename="/mnt/STORE/DEV/Neutrino/icons/back.png"
-       inkscape:export-xdpi="174.54442"
-       inkscape:export-ydpi="174.54442" />
-    <g
-       id="g1089">
-      <path
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 12.964583,4.7625 12.435417,5.2916667"
-         id="path1021"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0"
-         inkscape:export-filename="/mnt/STORE/DEV/Neutrino/icons/back.png"
-         inkscape:export-xdpi="174.54442"
-         inkscape:export-ydpi="174.54442" />
-      <path
-         style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 12.964583,5.8208333 12.435416,5.2916665"
-         id="path1023"
-         inkscape:connector-type="polyline"
-         inkscape:connector-curvature="0"
-         inkscape:export-filename="/mnt/STORE/DEV/Neutrino/icons/back.png"
-         inkscape:export-xdpi="174.54442"
-         inkscape:export-ydpi="174.54442" />
-    </g>
     <g
        id="g1089-3"
        style="display:inline"
@@ -646,78 +430,5 @@
          inkscape:export-xdpi="174.54442"
          inkscape:export-ydpi="174.54442" />
     </g>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.13229167;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 8.4666667,10.054167 8.9958334,8.4666668"
-       id="path1053"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.13229167;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 9.525,10.054167 8.9958334,8.4666668"
-       id="path1055"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.132292;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 8.7312499,9.5249998 v 0"
-       id="path1057"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.13229167;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 9.2604167,9.525 H 8.73125"
-       id="path1059"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.13229167;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 9.525,9.2604167 h 0.529167"
-       id="path1061"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.13229167;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 9.7895833,8.9958333 V 9.525"
-       id="path1063"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;fill:none;stroke:#ffffff;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 11.90625,8.202083 c 0,0 0,-0.2645834 0.264583,-0.2645834 0.264584,0 2.116667,0 2.116667,0 0,0 0.264583,0 0.264583,0.2645834 0,0.2645833 0,2.116667 0,2.116667 0,0 0,0.264583 -0.264583,0.264583 -0.264583,0 -2.116667,0 -2.116667,0 0,0 -0.264583,0 -0.264583,-0.264583 0,-0.264583 0,-2.116667 0,-2.116667 z"
-       id="path1696-3-6"
-       inkscape:export-filename="/mnt/STORE/DEV/Neutrino/icons/back.png"
-       inkscape:export-xdpi="174.54442"
-       inkscape:export-ydpi="174.54442" />
-    <path
-       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.132292;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 12.435417,10.054167 12.964584,8.4666665"
-       id="path1053-7"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.132292;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 13.49375,10.054167 12.964584,8.4666665"
-       id="path1055-5"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.132292;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 12.7,9.5249997 v 0"
-       id="path1057-3"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.132292;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 13.229167,9.5249997 H 12.7"
-       id="path1059-5"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.132292;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 13.49375,9.2604167 h 0.529167"
-       id="path1061-6"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
   </g>
 </svg>

@@ -1,16 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://theme/dark_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
-[ext_resource path="res://icons/new.png" type="Texture" id=4]
-[ext_resource path="res://icons/open.png" type="Texture" id=5]
-[ext_resource path="res://icons/save.png" type="Texture" id=6]
 [ext_resource path="res://icons/menu.png" type="Texture" id=7]
-[ext_resource path="res://icons/save_as.png" type="Texture" id=8]
 [ext_resource path="res://Sidebar.tscn" type="PackedScene" id=9]
-[ext_resource path="res://icons/sidebar.png" type="Texture" id=10]
-[ext_resource path="res://icons/file.png" type="Texture" id=11]
 [ext_resource path="res://Info.tscn" type="PackedScene" id=12]
 
 [sub_resource type="InputEventKey" id=1]
@@ -34,17 +28,19 @@ script = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 32.0
+margin_bottom = -16.0
 split_offset = 160
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sidebar" parent="Split" instance=ExtResource( 9 )]
+margin_bottom = 552.0
 
 [node name="Editors" type="Control" parent="Split"]
 margin_left = 173.0
 margin_right = 1024.0
-margin_bottom = 568.0
+margin_bottom = 552.0
 
 [node name="Tabs" type="Tabs" parent="."]
 anchor_right = 1.0
@@ -63,11 +59,8 @@ mouse_filter = 1
 mouse_default_cursor_shape = 2
 shortcut = SubResource( 2 )
 icon = ExtResource( 7 )
-items = [ "New", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Open file", ExtResource( 11 ), 0, false, false, 1, 0, null, "", false, "Open folder", ExtResource( 5 ), 0, false, false, 2, 0, null, "", false, "Save", ExtResource( 6 ), 0, false, false, 3, 0, null, "", false, "Save as", ExtResource( 8 ), 0, false, false, 4, 0, null, "", false, "Toggle sidebar", ExtResource( 10 ), 0, false, false, 5, 0, null, "", false, "Settings", null, 0, false, false, 6, 0, null, "", true, "Increase font size", null, 0, false, false, 7, 0, null, "", false, "Decrease font size", null, 0, false, false, 8, 0, null, "", false ]
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open file", null, 0, false, false, 1, 0, null, "", false, "Open folder", null, 0, false, false, 2, 0, null, "", false, "Save", null, 0, false, false, 3, 0, null, "", false, "Save as", null, 0, false, false, 4, 0, null, "", false, "Toggle sidebar", null, 0, false, false, 5, 0, null, "", false, "Settings", null, 0, false, false, 6, 0, null, "", true, "Increase font size", null, 0, false, false, 7, 0, null, "", false, "Decrease font size", null, 0, false, false, 8, 0, null, "", false ]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FileDialog" type="FileDialog" parent="."]
 anchor_left = 0.125

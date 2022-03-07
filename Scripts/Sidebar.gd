@@ -1,7 +1,8 @@
 extends Tree
 
 onready var main: Control = get_parent().get_parent()
-var folder_icon: Texture = preload("res://icons/open.png")
+
+var folder_icon: Texture = preload("res://icons/folder.png")
 var file_icon: Texture = preload("res://icons/file.png")
 
 func _ready():
@@ -13,7 +14,7 @@ func fill_tree(clear: bool = false, path: String = Global.current_path, root_dir
 		clear() # Clear tree
 	var dir: Directory = Directory.new()
 	var _err = dir.open(path) # Open folder
-	var _err1 = dir.list_dir_begin(true)
+	_err = dir.list_dir_begin(true)
 	var file_name: String = dir.get_next()
 	var root: TreeItem
 	if root_dir == null:
@@ -30,7 +31,7 @@ func fill_tree(clear: bool = false, path: String = Global.current_path, root_dir
 			element.set_collapsed(true)
 			fill_tree(false, path + '/' + file_name, element)
 		file_name = dir.get_next()
-	dir.list_dir_begin(true)
+	_err = dir.list_dir_begin(true)
 	file_name = dir.get_next()
 	while file_name != '':
 		if dir.file_exists(file_name):
@@ -74,7 +75,10 @@ func _on_SidebarMenu_id_pressed(id):
 			$Dialog.popup_centered()
 			$Dialog/Text.grab_focus()
 		'Show folder':
-			var _err = OS.shell_open(path)
+			if dir.file_exists(path):
+				var _err = OS.shell_open(path.get_base_dir())
+			elif dir.dir_exists(path):
+				var _err = OS.shell_open(path)
 		'New folder':
 			$Dialog.window_title = 'Create folder'
 			$Dialog.popup_centered()
@@ -85,7 +89,7 @@ func _on_Text_text_entered(new_text):
 	var dir: Directory = Directory.new()
 	var path: String = get_selected_path()
 	if $Dialog.window_title == 'Rename':
-		var _err1 = dir.rename(path, path.get_base_dir() + '/' + new_text)
+		var _err = dir.rename(path, path.get_base_dir() + '/' + new_text)
 		$Dialog/Text.text = ''
 		$Dialog.hide()
 		get_selected().set_text(0, new_text)
